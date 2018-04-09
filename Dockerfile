@@ -1,7 +1,8 @@
 FROM debian:stretch
+RUN DEBIAN_FRONTEND=noninteractive apt update && apt install -y keyboard-configuration && rm -rf /var/lib/apt/lists/*
+
 RUN DEBIAN_FRONTEND=noninteractive apt update && apt upgrade -y && apt install -y dbus  dbus-x11  xorg  xserver-xorg-legacy  xinit  xterm lxde fcitx-skk fcitx-tools locales fonts-migmix fonts-ricty-diminished fonts-vlgothic wget dmenu tmux tig mutt && rm -rf /var/lib/apt/lists/*
 RUN sed -i "s/allowed_users=console/allowed_users=anybody/;$ a needs_root_rights=yes" /etc/X11/Xwrapper.config
-RUN groupadd netdev
 ENV XMODIFIERS @im=fcitx
 ENV QT_IM_MODULE fcitx
 ENV GTK_IM_MODULE fcitx

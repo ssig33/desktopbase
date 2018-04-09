@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euv
+echo 'deb-src http://deb.debian.org/debian/ stretch main non-free contrib' >> /etc/apt/sources.list
 DEBIAN_FRONTEND=noninteractive 
 apt update
 apt install -y libgnomeui-dev
